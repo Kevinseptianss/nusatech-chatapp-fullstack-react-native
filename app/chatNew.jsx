@@ -1,56 +1,99 @@
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLOR from "../constants/color";
 import chevronLeft from "../assets/images/chevron-left.png";
 import { useRouter } from "expo-router";
 
-const chatNew = () => {
+const ChatNew = () => {
   const router = useRouter();
 
   const pressHandler = () => {
     router.back();
   };
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View
-        style={{
-          padding: 16,
-          flexDirection: "row",
-          gap: 16,
-          justifyContent: "space-between",
-        }}
-      >
-        <TouchableOpacity
-          onPress={() => pressHandler()}
-          style={{
-            backgroundColor: "white",
-            height: 40,
-            width: 40,
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: 8,
-            borderWidth: 1,
-            borderColor: COLOR.borderGrey,
-            position: 'absolute',
-            margin: 16
-          }}
-        >
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={pressHandler} style={styles.backButton}>
           <Image source={chevronLeft} />
         </TouchableOpacity>
-        <View style={{ flexDirection: "row", height: 40, gap: 8, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: 16, fontWeight: 600 }}>Chatting</Text>
+        <View style={styles.headerTitleContainer}>
+          <Text style={styles.headerTitle}>Chatting</Text>
         </View>
       </View>
-      <View style={{ flex: 1, padding: 16, backgroundColor: 'white', margin: 16, padding: 16, borderRadius: 8, gap: 16 }}>
-          <Text style={{fontSize: 16, fontWeight: 600}}>Input Username</Text>
-          <Text style={{fontSize: 14, fontWeight: 400}}>Input Username</Text>
-          <TextInput placeholder="input username" style={{height: 54, borderColor: COLOR.borderTextInput, borderWidth: 1, borderRadius: 8, padding: 12}} />
+      <View style={styles.inputContainer}>
+        <Text style={styles.inputLabel}>Input Username</Text>
+        <Text style={styles.inputSubtitle}>Input Username</Text>
+        <TextInput placeholder="input username" style={styles.textInput} />
       </View>
     </SafeAreaView>
   );
 };
 
-export default chatNew;
+export default ChatNew;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    padding: 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  backButton: {
+    backgroundColor: "white",
+    height: 40,
+    width: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: COLOR.borderGrey,
+    position: "absolute",
+    margin: 16,
+  },
+  headerTitleContainer: {
+    flexDirection: "row",
+    height: 40,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  headerTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  inputContainer: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: "white",
+    margin: 16,
+    borderRadius: 8,
+    gap: 16,
+  },
+  inputLabel: {
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  inputSubtitle: {
+    fontSize: 14,
+    fontWeight: "400",
+  },
+  textInput: {
+    height: 54,
+    borderColor: COLOR.borderTextInput,
+    borderWidth: 1,
+    borderRadius: 8,
+    padding: 12,
+  },
+});

@@ -61,26 +61,14 @@ const OnboardingScreen = () => {
 
   const Footer = () => {
     return (
-      <View
-        style={{
-          height: 50,
-          justifyContent: "space-between",
-          paddingHorizontal: 20,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            marginTop: 20,
-          }}
-        >
+      <View style={styles.footerContainer}>
+        <View style={styles.indicatorContainer}>
           {slides.map((_, index) => (
             <View
               key={index}
               style={[
                 styles.indicator,
-                currentIndex == index && {
+                currentIndex === index && {
                   backgroundColor: COLOR.secondary,
                   width: 24,
                 },
@@ -97,10 +85,11 @@ const OnboardingScreen = () => {
     const currentIndex = Math.round(contentOffsetX / width);
     setCurrentIndex(currentIndex);
   };
-  
+
   const slideToValue1 = height * 0.45;
-  const centerY = height / 2 + 50; 
-  const easingFunction = Easing.out(Easing.exp); 
+  const centerY = height / 2 + 50;
+  const easingFunction = Easing.out(Easing.exp);
+
   const startAnimation = () => {
     const animation1 = Animated.timing(slideAnimation, {
       toValue: slideToValue1,
@@ -108,16 +97,14 @@ const OnboardingScreen = () => {
       easing: easingFunction,
       useNativeDriver: true,
     });
-  
-    // Create the second animation
+
     const animation2 = Animated.timing(slideAnimation2, {
       toValue: centerY,
       duration: 500,
       easing: easingFunction,
       useNativeDriver: true,
     });
-  
-    // Run both animations in parallel
+
     Animated.parallel([animation1, animation2]).start();
   };
 
@@ -162,30 +149,16 @@ const OnboardingScreen = () => {
             bounces={false}
           />
           <Footer />
-          <View style={{ marginBottom: 20, width: "90%" }}>
-            <View style={{ flexDirection: "column", gap: 10 }}>
-              <TouchableOpacity style={[styles.btn]} onPress={goNextSlide}>
-                <Text
-                  style={{ color: "white", fontSize: 15, fontWeight: "bold" }}
-                >
-                  Next
-                </Text>
+          <View style={styles.buttonContainer}>
+            <View style={styles.buttonColumn}>
+              <TouchableOpacity style={styles.btn} onPress={goNextSlide}>
+                <Text style={styles.nextButtonText}>Next</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.btn, { backgroundColor: "white" }]}
-                onPress={() => {
-                  startAnimation();
-                }}
+                onPress={startAnimation}
               >
-                <Text
-                  style={{
-                    color: COLOR.secondary,
-                    fontSize: 15,
-                    fontWeight: "bold",
-                  }}
-                >
-                  Skip
-                </Text>
+                <Text style={styles.skipButtonText}>Skip</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -198,15 +171,7 @@ const OnboardingScreen = () => {
             transform: [{ translateY: slideAnimation2 }],
           }}
         >
-          <Text
-            style={{
-              fontSize: 16,
-              fontWeight: 600,
-              textAlign: "center",
-              maxWidth: "60%",
-              marginBottom: 20,
-            }}
-          >
+          <Text style={styles.welcomeText}>
             Selamat datang di Aplikasi Were Chatiing
           </Text>
           <TouchableOpacity
@@ -215,18 +180,10 @@ const OnboardingScreen = () => {
               { backgroundColor: COLOR.btnGoogle, width: "100%" },
             ]}
             onPress={() => {
-              router.push('/(tabs)/chat')
+              router.push("/(tabs)/chat");
             }}
           >
-            <Text
-              style={{
-                color: COLOR.txtGoogle,
-                fontSize: 14,
-                fontWeight: "500",
-              }}
-            >
-              Lanjutkan Dengan Google
-            </Text>
+            <Text style={styles.googleButtonText}>Lanjutkan Dengan Google</Text>
           </TouchableOpacity>
         </Animated.View>
       </ImageBackground>
@@ -292,11 +249,51 @@ const styles = StyleSheet.create({
     marginHorizontal: 3,
     borderRadius: 99,
   },
+  footerContainer: {
+    height: 50,
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+  },
+  indicatorContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+  buttonContainer: {
+    marginBottom: 20,
+    width: "90%",
+  },
+  buttonColumn: {
+    flexDirection: "column",
+    gap: 10,
+  },
   btn: {
     justifyContent: "center",
     alignItems: "center",
     height: 48,
     backgroundColor: COLOR.secondary,
     borderRadius: 10,
+  },
+  nextButtonText: {
+    color: "white",
+    fontSize: 15,
+    fontWeight: "bold",
+  },
+  skipButtonText: {
+    color: COLOR.secondary,
+    fontSize: 15,
+    fontWeight: "bold",
+  },
+  welcomeText: {
+    fontSize: 16,
+    fontWeight: "600",
+    textAlign: "center",
+    maxWidth: "60%",
+    marginBottom: 20,
+  },
+  googleButtonText: {
+    color: COLOR.txtGoogle,
+    fontSize: 14,
+    fontWeight: "500",
   },
 });

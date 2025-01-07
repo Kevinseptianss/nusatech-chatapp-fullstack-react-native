@@ -1,4 +1,11 @@
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLOR from "../../constants/color";
@@ -26,23 +33,23 @@ const datas = [
 
 const Item = ({ data }) => {
   const router = useRouter();
-  const { name, email, lastOnline, notif, profile } = data; // Destructure the properties
+  const { name, email, lastOnline, notif, profile } = data;
 
   const pressHandler = () => {
-    router.push('/chatDetails');
-  }
+    router.push("/chatDetails");
+  };
 
   return (
-    <TouchableOpacity onPress={() => pressHandler()} style={{ backgroundColor: 'white', padding: 10, borderRadius: 10, marginVertical: 5, flexDirection: 'row', gap: 16, justifyContent: 'center', alignItems: 'center' }}>
-      <Image source={{ uri: profile }} style={{ width: 50, height: 50, borderRadius: 25 }} />
-      <View style={{width: '60%'}}>
-        <Text style={{fontSize: 16, fontWeight: 600}}>{name}</Text>
-        <Text style={{fontSize: 13}}>{email}</Text>
+    <TouchableOpacity onPress={pressHandler} style={styles.itemContainer}>
+      <Image source={{ uri: profile }} style={styles.profileImage} />
+      <View style={styles.infoContainer}>
+        <Text style={styles.nameText}>{name}</Text>
+        <Text style={styles.emailText}>{email}</Text>
       </View>
-      <View style={{alignItems: 'flex-end', gap: 4}}>
-        <Text style={{fontSize: 10}}>{lastOnline}</Text>
-        <View style={{backgroundColor: COLOR.secondary, height: 17, width: 17, alignItems: 'center', justifyContent: 'center', borderRadius: 999}}>
-          <Text style={{fontSize: 8, color: 'white'}}>{notif}</Text>
+      <View style={styles.statusContainer}>
+        <Text style={styles.lastOnlineText}>{lastOnline}</Text>
+        <View style={styles.notificationBadge}>
+          <Text style={styles.notificationText}>{notif}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -69,18 +76,23 @@ const ChatScreen = () => {
               style={styles.tab}
               onPress={() => handlePress(index)}
             >
-              <Text style={[styles.tabText, topBar === index && styles.activeTabText]}>
+              <Text
+                style={[
+                  styles.tabText,
+                  topBar === index && styles.activeTabText,
+                ]}
+              >
                 {label}
               </Text>
               {topBar === index && <View style={styles.activeIndicator} />}
             </TouchableOpacity>
           ))}
         </View>
-        <View style={{marginTop: 12, height: '100%'}}>
+        <View style={styles.listContainer}>
           <FlatList
             data={datas}
             renderItem={renderItem}
-            keyExtractor={item => item.id}
+            keyExtractor={(item) => item.id.toString()}
           />
         </View>
       </View>
@@ -106,17 +118,17 @@ const styles = StyleSheet.create({
   topBar: {
     height: 36,
     marginTop: 20,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   tab: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   tabText: {
     color: COLOR.txtSecondary,
@@ -125,10 +137,58 @@ const styles = StyleSheet.create({
     color: COLOR.secondary,
   },
   activeIndicator: {
-    width: '100%',
+    width: "100%",
     height: 3,
     backgroundColor: COLOR.secondary,
-    position: 'absolute',
+    position: "absolute",
     bottom: -10,
+  },
+  listContainer: {
+    marginTop: 12,
+    height: "100%",
+  },
+  itemContainer: {
+    backgroundColor: "white",
+    padding: 10,
+    borderRadius: 10,
+    marginVertical: 5,
+    flexDirection: "row",
+    gap: 16,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  profileImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  infoContainer: {
+    width: "60%",
+  },
+  nameText: {
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  emailText: {
+    fontSize: 13,
+  },
+  statusContainer: {
+    alignItems: "flex-end",
+    gap: 4,
+  },
+  lastOnlineText: {
+    fontSize: 10,
+  },
+  notificationBadge: {
+    backgroundColor: COLOR.secondary,
+    height: 17,
+    width: 17,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 999,
+  },
+  notificationText: {
+    fontSize: 8,
+    color: "white",
   },
 });
