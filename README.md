@@ -48,3 +48,19 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+Design Figma :
+[https://www.figma.com/design/1y3e3VhxxKCZdrtcMvQJwc/Design-Testing?node-id=0-1&t=](https://www.figma.com/design/1y3e3VhxxKCZdrtcMvQJwc/Design-Testing?node-id=0-1&t= ogXhWPTkVQhqBZtI-1)
+
+Preview :
+![Simulator Screenshot - iPhone 15 - 2025-01-07 at 15 10 59](https://github.com/user-attachments/assets/22129866-7332-497a-ac7a-bcfa5cfc0924)
+![Simulator Screenshot - iPhone 15 - 2025-01-07 at 15 11 06](https://github.com/user-attachments/assets/bf96e229-c0f6-4ebe-acdf-6d842220c857)
+![Simulator Screenshot - iPhone 15 - 2025-01-07 at 15 11 09](https://github.com/user-attachments/assets/2950eabd-969d-4622-9ee1-56f0540a5048)
+![Simulator Screenshot - iPhone 15 - 2025-01-07 at 15 11 12](https://github.com/user-attachments/assets/84dc6ad4-de6b-4ce2-9c1f-909ccba5bd15)
+![Simulator Screenshot - iPhone 15 - 2025-01-07 at 15 11 18](https://github.com/user-attachments/assets/3de34e7b-14a9-4723-974a-48df9166c049)
+![Simulator Screenshot - iPhone 15 - 2025-01-07 at 15 11 23](https://github.com/user-attachments/assets/4fd0ea50-72f0-41ca-8e52-756ecb5beaa3)
+![Simulator Screenshot - iPhone 15 - 2025-01-07 at 15 11 35](https://github.com/user-attachments/assets/04efd132-4f25-4499-825d-97f3320e74b8)
+![Simulator Screenshot - iPhone 15 - 2025-01-07 at 15 11 38](https://github.com/user-attachments/assets/b57974ce-7889-40f0-909d-bdcdafef32df)
+![Simulator Screenshot - iPhone 15 - 2025-01-07 at 15 12 27](https://github.com/user-attachments/assets/676c6954-5af1-4152-9edb-4833478ee077)
+
+
